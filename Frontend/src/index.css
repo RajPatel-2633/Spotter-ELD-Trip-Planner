@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #090A0D;
+  --bg-card: #111319;
+  --bg-card-hover: #161922;
+  --bg-card-border: #1E2330;
+  --bg-input: #0B0D12;
+  --bg-input-border: #232938;
+
+  --accent-orange: #FF5722;
+  --accent-orange-hover: #F94510;
+  --accent-orange-glow: rgba(255, 87, 34, 0.25);
+  
+  --status-offduty: #4B5563;
+  --status-sleeper: #3B82F6;
+  --status-driving: #FF5722;
+  --status-onduty: #F59E0B;
+  --status-compliant: #10B981;
+
+  --text-main: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --text-subtle: #6B7280;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #2A3040;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-orange);
+}
+
+/* Common Card Base */
+.spotter-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotter-card:hover {
+  border-color: #2D3548;
+}
+
+/* Inputs */
+.spotter-input {
+  background: var(--bg-input);
+  border: 1px solid var(--bg-input-border);
+  border-radius: 8px;
+  color: var(--text-main);
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.spotter-input:focus {
+  outline: none;
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 3px var(--accent-orange-glow);
+}
+
+/* Buttons */
+.spotter-btn-primary {
+  background: var(--accent-orange);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px var(--accent-orange-glow);
+}
+
+.spotter-btn-primary:hover:not(:disabled) {
+  background: var(--accent-orange-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-orange-glow);
+}
+
+.spotter-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.spotter-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spotter-btn-secondary {
+  background: #181C26;
+  border: 1px solid var(--bg-card-border);
+  color: var(--text-main);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.spotter-btn-secondary:hover {
+  background: #202636;
+  border-color: #323C52;
+  color: #FFFFFF;
+}
+
+/* Typography Utilities */
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+.text-orange {
+  color: var(--accent-orange);
+}
+
+.text-amber {
+  color: var(--status-onduty);
+}
+
+.text-blue {
+  color: var(--status-sleeper);
+}
+
+.text-green {
+  color: var(--status-compliant);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* High-Contrast Print Styling for FMCSA Form MCS-59 ELD Log Sheet */
+@media print {
+  @page {
+    size: Letter landscape;
+    margin: 0.35in;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .printable-rods-root,
+  .printable-rods-root * {
+    visibility: visible !important;
+  }
+
+  .printable-rods-root {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+@media screen {
+  .printable-rods-root {
+    display: none !important;
+  }
+}
