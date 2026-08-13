@@ -186,10 +186,10 @@ pip install -r requirements.txt
 
 Create `Backend/.env`:
 ```env
-SECRET_KEY=django-insecure-spotter-os-secret-key-2026
+SECRET_KEY=your-django-secret-key-here
 DEBUG=True
 CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-MONGODB_URI=mongodb+srv://admin:admin123@cluster0.zogap5f.mongodb.net/spotter_trips?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/spotter_db?retryWrites=true&w=majority
 ```
 
 Run migrations and start Django server:
