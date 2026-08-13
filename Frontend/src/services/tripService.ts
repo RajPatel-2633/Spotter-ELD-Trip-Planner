@@ -1,7 +1,17 @@
 import type { TripInput, TripPlan } from '../types/trip';
 
-const RAW_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
-const API_BASE_URL = `${RAW_API_URL.replace(/\/$/, '')}/trips`;
+const getApiBaseUrl = (): string => {
+  let url = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api').trim().replace(/\/$/, '');
+  if (!url.endsWith('/trips')) {
+    if (!url.endsWith('/api')) {
+      url += '/api';
+    }
+    url += '/trips';
+  }
+  return url;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Pure API client for Spotter TripOS Django REST Backend
